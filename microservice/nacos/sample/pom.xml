@@ -13,5 +13,8 @@
     <artifactId>nacos-sample</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>nacos-springboot-config</module>
+    </modules>
 
 </project>

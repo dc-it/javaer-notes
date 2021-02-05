@@ -61,4 +61,13 @@ public class StringTest {
         sb.append("a").append("b").append("c");
         System.out.println(sb.toString());
     }
+
+    /**
+     * 字符串常量池
+     *
+     */
+    @Test
+    public void testStringPool(){
+
+    }
 }

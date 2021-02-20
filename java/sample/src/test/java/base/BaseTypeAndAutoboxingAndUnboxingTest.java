@@ -7,7 +7,6 @@ import org.junit.Test;
  * 基本类型
  *
  * 八大基本类型：byte、short、int、long、float、double、char、boolean
- * 基本类型自动装箱，调用valueOf()
  * 包装类型都声明final、不可继承
  * 包装类型自动拆箱
  *
@@ -18,11 +17,16 @@ public class BaseTypeAndAutoboxingAndUnboxingTest {
 
     /**
      * 测试基本类型自动装箱和自动拆箱
+     * 基本类型装箱调用包装类型的valueOf()方法（boolean除外）
+     * 包装类型拆箱调用包装类型的[类型Value()]方法（boolean除外）
+     * 可通过反编译软件查看class文件
      */
     @Test
     public void testAutoboxingAndUnboxing(){
-        Integer aab = 1; //调用Integer.valueOf()装箱
-        int aub = aab; //Integer.intValue()拆箱
+        Integer aab = 1; //调用Integer包装类型valueOf()方法装箱
+        int aub = aab; //调用Integer包装类型intValue()方法拆箱
+        Float fab=1F; // 调用Float包装类型valueOf()方法装箱
+        float fub=fab; //调用Float包装类型floatValue()方法拆箱
     }
 
     /**

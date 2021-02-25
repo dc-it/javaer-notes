@@ -11,7 +11,7 @@
 
     <modules>
         <module>java/sample</module>
-        <module>microservice/nacos/sample</module>
+        <module>nacos/sample</module>
     </modules>
 
     <properties>

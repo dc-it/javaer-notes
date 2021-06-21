@@ -12,6 +12,7 @@
     <modules>
         <module>java/sample</module>
         <module>nacos/sample</module>
+        <module>designpattern/designpattern-sample</module>
     </modules>
 
     <properties>
@@ -39,6 +40,10 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
 

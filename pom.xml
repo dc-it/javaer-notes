@@ -13,6 +13,7 @@
         <module>java/sample</module>
         <module>nacos/sample</module>
         <module>designpattern/designpattern-sample</module>
+        <module>designpattern/sample</module>
     </modules>
 
     <properties>

@@ -5,10 +5,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
@@ -39,6 +36,11 @@ import java.util.Set;
  * 选择器：
  * 允许单线程处理多个 Channel
  *
+ * 管道Pipe：
+ * 线程间单向通道
+ * Sink通道进/写入
+ * Source通道出/读出
+ *
  * @author duchao
  */
 public class NIOTest {
@@ -50,10 +52,13 @@ public class NIOTest {
         //testIOBlockClient();
 
         //非阻塞式，有选择器
-        testIONonBlockClient();
+        //testIONonBlockClient();
     }
 
-
+    /**
+     * 客户端（非阻塞）
+     * @throws IOException
+     */
     public static void testIONonBlockClient() throws IOException {
         Selector selector = Selector.open();
 
@@ -102,6 +107,10 @@ public class NIOTest {
         }
     }
 
+    /**
+     * 服务端（非阻塞）
+     * @throws IOException
+     */
     @Test
     public void testIONonBlockServer() throws IOException {
 
@@ -198,6 +207,33 @@ public class NIOTest {
                 //e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * 管道
+     */
+    @Test
+    public void testIOPipe() throws IOException {
+        // 创建管道
+        Pipe pipe = Pipe.open();
+
+        // 向管道写输入，获取sink通道
+        Pipe.SinkChannel sinkChannle = pipe.sink();
+        ByteBuffer buf = ByteBuffer.allocate(1024);
+        buf.clear();
+        buf.put("进入管道sink通道".getBytes());
+        buf.flip();
+        while(buf.hasRemaining()){
+            // 向管道中写入数据
+            sinkChannle.write(buf);
+        }
+
+        // 获取source通道
+        Pipe.SourceChannel sourceChannel = pipe.source();
+        ByteBuffer buf2 = ByteBuffer.allocate(1024);
+        //调用SourceChannel的read()方法读取数据
+        sourceChannel.read(buf2);
+        System.out.println(new String(buf2.array()));
     }
 
 }

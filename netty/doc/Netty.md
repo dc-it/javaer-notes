@@ -10,3 +10,4 @@ RocketMQ、Dubbo等使用Netty作为底层网络通讯。
 参考资料：
 - [netty-5.0.0.Alpha2官方例子](https://github.com/netty/netty/blob/netty-5.0.0.Alpha2/example/src/main/java/io/netty/example)
 - [基于netty游戏服后台搭建](https://blog.csdn.net/h348592532/article/details/52816148)
+- [SpringBoot2+Netty+WebSocket(netty实现websocket，支持URL参数)](https://blog.csdn.net/moshowgame/article/details/91552993)

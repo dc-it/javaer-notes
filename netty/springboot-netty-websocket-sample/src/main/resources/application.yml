@@ -1,0 +1,17 @@
+
+websocket:
+  port: 8888
+
+#静态资源配置
+spring:
+  mvc:
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  freemarker:
+    charset: UTF-8
+    content-type: text/html;charset=utf-8
+    suffix: .ftl
+    template-loader-path: classpath:/templates
+

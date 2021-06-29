@@ -12,8 +12,8 @@
     <modules>
         <module>java/sample</module>
         <module>nacos/sample</module>
-        <module>designpattern/designpattern-sample</module>
         <module>designpattern/sample</module>
+        <module>netty/sample</module>
     </modules>
 
     <properties>

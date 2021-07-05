@@ -6,6 +6,8 @@ import java.util.concurrent.*;
 /**
  * Future、FutureTask 异步计算任务 get获取计算结果
  *
+ * 底层实用NIO方式实现
+ *
  * 一般和Executor、Thread一起使用
  *
  * @author duchao

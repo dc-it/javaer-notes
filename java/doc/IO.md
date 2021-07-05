@@ -91,3 +91,4 @@ select/poll/epoll --> IO多路复用
 - [高性能网络编程(六)：一文读懂高性能网络编程中的线程模型](http://www.52im.net/thread-1939-1-1.html)
 - [漫话：如何给女朋友解释什么是Linux的五种IO模型？](https://mp.weixin.qq.com/s?__biz=Mzg3MjA4MTExMw==&mid=2247484746&idx=1&sn=c0a7f9129d780786cabfcac0a8aa6bb7&source=41&scene=21#wechat_redirect)
 - [BIO NIO AIO区别](https://zhuanlan.zhihu.com/p/112810033)
+- [你管这破玩意叫 IO 多路复用？](https://mp.weixin.qq.com/s/YdIdoZ_yusVWza1PU7lWaw)

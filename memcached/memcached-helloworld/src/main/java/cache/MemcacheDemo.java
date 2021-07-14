@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.logging.Logger;
 
 /**
  * Memcached
@@ -18,7 +17,7 @@ public class MemcacheDemo {
     public void test() {
         try {
             MemcachedClient memcachedClient = new MemcachedClient(new InetSocketAddress(MemcacheProperties.IP, MemcacheProperties.PORT));
-            memcachedClient.set("username",1000,"duchao");
+            memcachedClient.set("username", 1000, "duchao");
             System.out.println(memcachedClient.get("username"));
         } catch (IOException e) {
             e.printStackTrace();

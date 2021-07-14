@@ -15,6 +15,7 @@
         <module>designpattern/sample</module>
         <module>netty/sample</module>
         <module>zookeeper/zookeeper-helloworld</module>
+        <module>memcached/memcached-helloworld</module>
     </modules>
 
     <properties>

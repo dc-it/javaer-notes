@@ -1,0 +1,52 @@
+spring:
+  shardingsphere:
+    props:
+      sql-show: true
+    # 配置数据源
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://182.92.202.68:8024/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: duchao123
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://182.92.202.68:8024/ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: duchao123
+    # 表规则
+    rules:
+      # 分片配置
+      sharding:
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
+#            props:
+#              worker-id: 123
+        tables:
+          t_order:
+            # 数据节点
+            actual-data-nodes: ds$->{0..1}.t_order$->{0..1}
+            # 分库策略
+            database-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: database-inline
+            # 分表策略
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: table-inline
+        sharding-algorithms:
+          database-inline:
+            type: INLINE
+            props:
+              algorithm-expression: ds$->{user_id % 2}
+          table-inline:
+            type: INLINE
+            props:
+              algorithm-expression: t_order$->{order_id % 2}
+

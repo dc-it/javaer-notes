@@ -15,6 +15,7 @@
 	<description>springboot集成shardingsphere</description>
 	<properties>
 		<java.version>11</java.version>
+		<sharding.version>4.1.1</sharding.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -38,10 +39,16 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--分布式数据库-->
 		<dependency>
 			<groupId>org.apache.shardingsphere</groupId>
-			<artifactId>shardingsphere-jdbc-core</artifactId>
-			<version>5.0.0-alpha</version>
+			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+			<version>${sharding.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>sharding-core-common</artifactId>
+			<version>${sharding.version}</version>
 		</dependency>
 	</dependencies>
 

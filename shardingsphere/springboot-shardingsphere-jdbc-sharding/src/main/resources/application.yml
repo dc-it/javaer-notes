@@ -4,17 +4,21 @@ spring:
       sql-show: true
     # 配置数据源
     datasource:
-      names: ds0,ds1
-      ds0:
-        type: com.zaxxer.hikari.HikariDataSource
+      names: ds0,ds1,ds2
+      common:
         driver-class-name: com.mysql.cj.jdbc.Driver
+        #使用Hikari数据源，数据库地址用jdbc-url；使用Druid数据源，数据库地址用url  com.alibaba.druid.pool.DruidDataSource
+        type: com.zaxxer.hikari.HikariDataSource
+      ds0:
         jdbc-url: jdbc:mysql://182.92.202.68:8024/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
         username: root
         password: duchao123
       ds1:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
         jdbc-url: jdbc:mysql://182.92.202.68:8024/ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: duchao123
+      ds2:
+        jdbc-url: jdbc:mysql://182.92.202.68:8024/ds2?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
         username: root
         password: duchao123
     # 表规则
@@ -24,8 +28,10 @@ spring:
         key-generators:
           snowflake:
             type: SNOWFLAKE
-#            props:
-#              worker-id: 123
+            props:
+              max-vibration-offset: 2048
+              worker-id: 123
+        binding-tables: t_order
         tables:
           t_order:
             # 数据节点
@@ -38,8 +44,11 @@ spring:
             # 分表策略
             table-strategy:
               standard:
-                sharding-column: order_id
+                sharding-column: id
                 sharding-algorithm-name: table-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake
         sharding-algorithms:
           database-inline:
             type: INLINE
@@ -48,5 +57,18 @@ spring:
           table-inline:
             type: INLINE
             props:
-              algorithm-expression: t_order$->{order_id % 2}
+              algorithm-expression: t_order$->{id % 2}
+        default-table-strategy:
+          none:
+        default-key-generate-strategy:
+          type: SNOWFLAKE
+          column: id
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

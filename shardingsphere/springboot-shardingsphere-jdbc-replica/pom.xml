@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dc</groupId>
-	<artifactId>springboot-shardingsphere-jdbc</artifactId>
+	<artifactId>springboot-shardingsphere-jdbc-replica</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-shardingsphere-jdbc</name>
-	<description>springboot集成shardingsphere</description>
+	<name>springboot-shardingsphere-jdbc-replica</name>
+	<description>springboot集成shardingsphere-jdbc实现读写分离</description>
 	<properties>
 		<java.version>11</java.version>
 		<shardingsphere.version>5.0.0-alpha</shardingsphere.version>
